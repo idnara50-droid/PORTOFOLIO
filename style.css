@@ -106,6 +106,6 @@ footer{padding-bottom:82px}
 .video-thumb span{padding:7px;font-size:12px}
 .video-thumb:hover{border-color:var(--accent)}
 #video-player{width:min(730px,calc(100% - 30px))}
-#video-player iframe{display:block;width:100%;height:min(55vh,450px);border:0;border-radius:10px;background:#080808;margin:14px 0}
+#video-player iframe,#video-player video{display:block;width:100%;height:min(55vh,450px);border:0;border-radius:10px;background:#080808;margin:14px 0}
 @media(max-width:600px){.feature-slide{grid-template-columns:1fr}.feature-image{min-height:260px}}
 @media(prefers-reduced-motion:reduce){.feature-slide:not([hidden]),.reveal-in{animation:none}}
