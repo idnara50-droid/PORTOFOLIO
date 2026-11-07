@@ -41,7 +41,8 @@ let videoObjectUrl;
 for (const button of document.querySelectorAll('[data-play]')) {
   button.addEventListener('click', async () => {
     const source = `https://drive.google.com/file/d/${encodeURIComponent(button.dataset.play)}`;
-    const useNative = button.dataset.nativeVideo === 'intro';
+    const localVideo = button.dataset.videoSrc;
+    const useNative = localVideo || button.dataset.nativeVideo === 'intro';
     playerTitle.textContent = button.dataset.title;
     frame.title = button.dataset.title;
     frame.hidden = useNative;
@@ -51,6 +52,12 @@ for (const button of document.querySelectorAll('[data-play]')) {
     if (!useNative) frame.src = `${source}/preview`;
     player.showModal();
     if (!useNative) return;
+    if (localVideo) {
+      videoStatus.hidden = true;
+      nativeVideo.src = localVideo;
+      nativeVideo.play().catch(() => {});
+      return;
+    }
 
     videoStatus.textContent = 'Memuat video…';
     const load = new AbortController();
